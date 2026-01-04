@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Surprise 💝</title>
+
+<style>
+*{box-sizing:border-box;}
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#b11226;
+    font-family:'Comic Sans MS', cursive;
+}
+.slide{
+    display:none;
+    width:360px;
+    height:520px;
+}
+.slide.active{display:block;}
+
+.notebook{
+    width:100%;
+    height:100%;
+    background:#fffafc;
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    text-align:center;
+}
+.pink{color:#ff4d88;}
+.btn{
+    margin-top:16px;
+    padding:10px 26px;
+    border:none;
+    border-radius:25px;
+    background:#ff4d88;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+}
+
+/* ===== MUSIC ===== */
+.song{
+    width:100%;
+    padding:10px;
+    margin:6px 0;
+    border-radius:20px;
+    border:2px solid #ff4d88;
+    color:#ff4d88;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* ===== CARDS ===== */
+.cards{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+}
+.card{
+    width:100px;
+    height:140px;
+    perspective:800px;
+    cursor:pointer;
+}
+.card-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:transform 0.8s;
+}
+.card.open .card-inner{
+    transform:rotateY(180deg);
+}
+.card-face{
+    position:absolute;
+    inset:0;
+    border-radius:12px;
+    backface-visibility:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:8px;
+    text-align:center;
+    font-size:12px;
+}
+.card-front{
+    background:#ffe6ee;
+}
+.card-front img{
+    width:90%;
+}
+.card-back{
+    background:white;
+    transform:rotateY(180deg);
+    color:#ff4d88;
+    font-weight:bold;
+}
+
+/* FINAL */
+.final{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    color:white;
+    font-size:20px;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide active" id="s1">
+<div class="notebook">
+<div style="font-size:40px;">🐱</div>
+<h2 class="pink">Happy Birthday!</h2>
+<div class="pink">Happiest birthday my bbbggg 🎂</div>
+<p>Today is all about celebrating the most amazing person in my world.</p>
+<div class="pink"><b>Ready for ur birthday surprise?</b></div>
+<button class="btn" onclick="go(2)">Let’s Go 💖</button>
+</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="s2">
+<div class="notebook">
+<p>💌Happiest birthday to myyy deaarreessttt, loveeliiesstt, & cutttiieeessttt bbbggg, wish u a very happiest b'day may this year fills with a lots of love, care, happiness, joy & prosperity for u❤️.. aur bhgwan tumhe sadhbuddhi de, & idk what else to says just like u r my most fvrttt person ever😘& I really love u alloottt & I'm always here by ur side; u simply call me the devil's advocate😌🫶🏻, & yes, still I want to travel with u alot & take alot of pictures so be prepared for that &  cheers to ur 22 years &, in; as a present, I'm the biggest suprise u could ever have iykyk😁 but u've upgraded so, u've unlocked my more immaturity with kalesh...so, all the Very Best darlingg & I'm always proud of u bcz jigra toh h tum mein...
+Once again happiest 22nd bdayyy bbggg & love u alotttt...
+
+-YOURS,<br>🎀Ladaku Vimaan🎀</p>
+<button class="btn" onclick="go(3)">Continue 💕</button>
+</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide" id="s3">
+<div class="notebook">
+<h3 class="pink">Cut your birthday cake 🎂</h3>
+<img src="cake1.png">
+<button class="btn" onclick="go(4)">Next 💖</button>
+</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide" id="s4">
+<div class="notebook">
+<h3>It’s cake time 🎂</h3>
+<h3 class="pink">Make your wish come true</h3>
+<p>Close your eyes and make your birthday wish ✨</p>
+<button class="btn" onclick="go(5)">I have made my wish 💖</button>
+</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide" id="s5">
+<div class="notebook">
+<h3 class="pink">Choose your birthday soundtrack 🎶</h3>
+<div class="pink"><b>Now playing:</b></div>
+<div id="nowPlaying" class="pink">None</div>
+
+<div class="song" onclick="playMusic('song1.mp3','A Thousand Years')">💕 A Thousand Years</div>
+<div class="song" onclick="playMusic('song2.mp3','Honeypie')">✨ Honeypie </div>
+<div class="song" onclick="playMusic('song3.mp3','Pretty Little Baby')">🎉 Pretty Little Baby</div>
+
+<button class="btn" onclick="go(6)">Continue to birthday surprises 💖</button>
+</div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide" id="s6">
+<div class="notebook">
+<h3 class="pink">Special gifts just for you 🎁</h3>
+
+<div class="cards">
+
+<div class="card" onclick="openCard(this)">
+<div class="card-inner">
+<div class="card-face card-front">
+<img src="kitty1.png">
+</div>
+<div class="card-face card-back">
+  Happiest bday to the person who thinks he isn't gud enough & iz feekingless but is the most sweetest, kindest & my all tym most fvrt human+animal💕
+</div>
+</div>
+</div>
+
+<div class="card" onclick="openCard(this)">
+<div class="card-inner">
+<div class="card-face card-front">
+<img src="kitty2.png">
+</div>
+<div class="card-face card-back">
+  Cheers to another 22nd year(tum toh aur buddhr hogye) of u being absolutely the most incredible & perfect(bket) just the way u are ✨
+</div>
+</div>
+</div>
+
+<div class="card" onclick="openCard(this)">
+<div class="card-inner">
+<div class="card-face card-front">
+<img src="kitty3.png">
+</div>
+<div class="card-face card-back">
+  May this year fill with everything u want(most probably a girl) & remember I love u & I’m always by ur side & proud of u bbg 💖
+</div>
+</div>
+</div>
+
+</div>
+
+<button id="finalBtn" class="btn" style="display:none;" onclick="go(7)">
+  
+Open final birthday letter (uff itni mehnat) 💗
+</button>
+</div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide" id="s7">
+<div class="notebook">
+<h3 class="pink">💌 Final Birthday Letter</h3>
+<div class="letter">
+<p>My dearest, lovely dovely bbg,</p>
+
+<p>
+May this year bring you joy, everything your heart desires,  
+and more happiness & blessings than you can imagine.
+</p>
+
+<p>
+Happiest birthday bby… you deserve the world & so much more.
+</p>
+
+<p>
+And no matter what — whether I’m with you or not —  
+I’m always by your side, loving you, supporting you for you the most.
+</p>
+
+<div class="signature">
+Yours, lovely,<br>(butki) 💖
+</div>
+</div>
+</div>
+</div>
+
+<audio id="bgMusic" loop></audio>
+
+<script>
+let opened=0;
+let candleBlown=false;
+let music=document.getElementById("bgMusic");
+let nowPlaying=document.getElementById("nowPlaying");
+
+function go(n){
+document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
+document.getElementById('s'+n).classList.add('active');
+}
+
+function playMusic(src,name){
+music.src=src;
+music.play();
+nowPlaying.innerText=name;
+}
+
+function openCard(card){
+if(!card.classList.contains('open')){
+card.classList.add('open');
+opened++;
+if(opened===3){
+document.getElementById('finalBtn').style.display="inline-block";
+}
+}
+}
+
+function openEnvelope(){
+document.getElementById("env").classList.add("open");
+document.getElementById("slide2Btn").style.display="inline-block";
+}
+
+function blowCandle(e){
+e.stopPropagation();
+document.getElementById("candle").classList.add("out");
+candleBlown=true;
+}
+
+function cutCake(){
+if(!candleBlown) return;
+document.getElementById("cake").classList.add("cut");
+document.getElementById("cakeBtn").style.display="inline-block";
+}
+</script>
+
+</body>
+</html>
